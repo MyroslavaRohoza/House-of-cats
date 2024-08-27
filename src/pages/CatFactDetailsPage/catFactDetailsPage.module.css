@@ -1,0 +1,33 @@
+.image {
+  height: 80vh;
+  margin-bottom: 24px;
+  object-fit: cover;
+}
+
+.container {
+  padding: 0px 16px 96px 16px;
+}
+
+.title {
+  color: rgb(44, 44, 44);
+  margin-bottom: 40px;
+}
+
+.content {
+  color: rgb(44, 44, 44);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.link{
+    display: flex;
+    gap: 5px;
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    padding-left: 156px;
+    padding-right: 156px;
+  }
+}

@@ -1,0 +1,48 @@
+.header {
+  background-color: var(--common-white);
+}
+
+.section {
+  padding: 0px 16px 96px 16px;
+}
+
+.main {
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1440px) {
+  .main {
+    display: grid;
+    grid-template-areas:
+      "p p"
+      "b s"
+      "b v"
+      "b .";
+    grid-gap: 60px 24px;
+  }
+
+  .section {
+    padding-left: 156px;
+    padding-right: 156px;
+  }
+}
+
+.postSection {
+  grid-area: p;
+}
+
+.blogSection {
+  grid-area: b;
+}
+
+.socialSection {
+  grid-area: s;
+}
+
+.videoSection {
+  grid-area: v;
+}
+
+.footer {
+  background-color: var(--blue-light);
+}

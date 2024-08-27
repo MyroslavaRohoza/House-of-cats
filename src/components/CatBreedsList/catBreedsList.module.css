@@ -1,0 +1,27 @@
+.catInfoPosts {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* grid-template-rows: 250px; */
+  grid-row-gap: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .catInfoPosts {
+    grid-gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 210px);
+  }
+  .catInfoPostItem:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+}
+
+@media (min-width: 1440px) {
+  .overlay {
+    padding: 24px 48px;
+  }
+  .catInfoPosts {
+    grid-template-rows: repeat(2, 300px);
+  }
+}
