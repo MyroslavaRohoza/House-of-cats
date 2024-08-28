@@ -5,6 +5,31 @@
   grid-row-gap: 12px;
 }
 
+.breedsContainer {
+  /* height: 700px; */
+  overflow: hidden;
+  position: relative;
+}
+
+.changeSlideBtn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.prevBtn {
+  top: 10px;
+}
+
+.nextBtn {
+  bottom: 10px;
+}
+
 @media screen and (min-width: 768px) {
   .catInfoPosts {
     grid-gap: 24px;

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import css from "./catBreedsItem.module.css";
 import { NavLink } from "react-router-dom";
 
 const CatBreedsItem = ({ breedsInfo }) => {
+  
+
   return (
     <li className={css.catInfoPostItem}>
       <NavLink className={css.catInfoLink} to={`/breeds/${breedsInfo.id}`}>
