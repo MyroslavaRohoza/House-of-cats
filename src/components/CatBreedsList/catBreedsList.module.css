@@ -3,6 +3,7 @@
   grid-template-columns: 1fr;
   /* grid-template-rows: 250px; */
   grid-row-gap: 12px;
+  height: 680px;
 }
 
 .breedsContainer {

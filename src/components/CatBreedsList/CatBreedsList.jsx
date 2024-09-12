@@ -11,23 +11,32 @@ import { useRef, useState } from "react";
 const CatBreedsList = () => {
   const containerRef = useRef(null);
   const breedsInfo = useSelector(selectCatBreeds);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const photosPerSlide = 3;
+  let [currentSlide, setCurrentSlide] = useState(0);
+  // const [totalPhotos, setTotalPhotos] = useState(10);
+  const photosInSlide = 3;
   const totalPhotos = 10;
   const photoHeight = 220;
 
   console.log(containerRef.current?.clientHeight);
+
   const moveSliders = (n) => {
-    let slideIndex = currentSlide + photosPerSlide * n;
+    // amount of photos per slide
+    const photosPerSlide = Math.ceil(totalPhotos / photosInSlide); //4
 
-    // if (slideIndex < 0) {
-    //   slideIndex =
-    //     photosPerSlide * (Math.floor(totalPhotos / photosPerSlide) - 1);
-    // } else if (slideIndex >= totalPhotos) {
-    //   slideIndex = 0;
-    // }
+    //index of last photo per slide
+    const lastIndex = photosPerSlide - 1; //3
 
-    setCurrentSlide(slideIndex);
+    //  index is greater than
+    if (currentSlide > lastIndex) {
+    currentSlide = 0;
+    }
+
+    //  index is less than
+    if (currentSlide < 0) {
+        currentSlide = lastIndex;
+    }
+
+    setCurrentSlide(currentSlide + n);
   };
   return (
     <div className={css.breedsContainer}>
@@ -35,7 +44,7 @@ const CatBreedsList = () => {
         className={css.catInfoPosts}
         ref={containerRef}
         style={{
-          transform: `translateY(-${220 * (currentSlide / photosPerSlide)}px)`,
+          transform: `translateY(-${220 * currentSlide}px)`,
         }}
       >
         {Array.isArray(breedsInfo) &&
@@ -43,10 +52,16 @@ const CatBreedsList = () => {
             <CatBreedsItem breedsInfo={breedsInfo} key={breedsInfo.id} />
           ))}
       </ul>
-      <button onClick={() => moveSliders(-1)} className={`${css.changeSlideBtn} ${css.prevBtn}`}>
+      <button
+        onClick={() => moveSliders(-1)}
+        className={`${css.changeSlideBtn} ${css.prevBtn}`}
+      >
         ➖
       </button>
-      <button onClick={() => moveSliders(1)} className={`${css.changeSlideBtn} ${css.nextBtn}`}>
+      <button
+        onClick={() => moveSliders(1)}
+        className={`${css.changeSlideBtn} ${css.nextBtn}`}
+      >
         ➕
       </button>
     </div>
