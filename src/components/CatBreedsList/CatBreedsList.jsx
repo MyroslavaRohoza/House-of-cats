@@ -6,16 +6,14 @@ import largeImage3 from "../../img/picture-3.png";
 import { useSelector } from "react-redux";
 import { selectCatBreeds } from "../../redux/catsInfo/selectors";
 import CatBreedsItem from "../CatBreedsItem/CatBreedsItem";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CatBreedsList = () => {
   const containerRef = useRef(null);
   const breedsInfo = useSelector(selectCatBreeds);
   let [currentSlide, setCurrentSlide] = useState(0);
-  // const [totalPhotos, setTotalPhotos] = useState(10);
   const photosInSlide = 3;
   const totalPhotos = 10;
-  const photoHeight = 220;
 
   console.log(containerRef.current?.clientHeight);
 
@@ -28,23 +26,34 @@ const CatBreedsList = () => {
 
     //  index is greater than
     if (currentSlide > lastIndex) {
-    currentSlide = 0;
+      currentSlide = 0;
     }
 
     //  index is less than
     if (currentSlide < 0) {
-        currentSlide = lastIndex;
+      currentSlide = lastIndex;
     }
 
     setCurrentSlide(currentSlide + n);
+
+    console.log(currentSlide);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      moveSliders(1);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [currentSlide]); 
+
   return (
     <div className={css.breedsContainer}>
       <ul
         className={css.catInfoPosts}
         ref={containerRef}
         style={{
-          transform: `translateY(-${220 * currentSlide}px)`,
+          transform: `translateY(-${232 * currentSlide}px)`,
         }}
       >
         {Array.isArray(breedsInfo) &&
